@@ -1,6 +1,6 @@
 # Raji Kumsa — Software Engineering Portfolio
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frajikumsa%2Fraji-kumsa-portfolio)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
 > **Backend & Android Developer** — C#/ASP.NET Core, Java/Firebase. Trilingual (English, Amharic, Afan Oromo). Open to junior roles in Addis Ababa or remote.
 
@@ -8,11 +8,12 @@
 
 ## ⚡ 1-Click Free Deployment
 
-Deploy this portfolio live to Vercel in 1 click:
+Deploy this portfolio live to Vercel:
 
-1. Click the **[Deploy with Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frajikumsa%2Fraji-kumsa-portfolio)** button above (or go to [vercel.com/new](https://vercel.com/new)).
-2. Connect your GitHub account and click **Deploy**.
-3. Your portfolio goes live instantly with automated CI/CD and free SSL.
+1. Open [**vercel.com/new**](https://vercel.com/new).
+2. Under **"Import Git Repository"**, find `raji-kumsa-portfolio` and click **"Import"**.
+3. Click the blue **"Deploy"** button.
+4. Your portfolio goes live instantly with automated CI/CD and free SSL.
 
 ---
 
