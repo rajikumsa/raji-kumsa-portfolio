@@ -112,7 +112,7 @@ export default function About({ onOpenCV }: AboutProps) {
                 <span className="text-xs text-space-gold font-mono">({PERSONAL_INFO.education.period})</span>
               </div>
               <p className="text-white/50 text-xs sm:text-sm mt-0.5">
-                {PERSONAL_INFO.education.institution} · {PERSONAL_INFO.education.graduationStatus}
+                {PERSONAL_INFO.education.institution} · Class of 2025
               </p>
             </div>
           </div>

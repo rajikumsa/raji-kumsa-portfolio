@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Github, ExternalLink, Code2, Database, Layout, Terminal, X, Check } from 'lucide-react';
+import { Github, ExternalLink, Code2, Database, Layout, Terminal, X, Check, Eye } from 'lucide-react';
 import { PROJECTS_DATA } from '../data';
 import { Project } from '../types';
 
@@ -8,7 +8,7 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const categories = ['All', 'Mobile', 'Backend', 'Web', 'Games'];
+  const categories = ['All', 'Backend', 'Mobile', 'Web', 'Experiments'];
 
   const filteredProjects = PROJECTS_DATA.filter((proj) => {
     if (selectedCategory === 'All') return true;
@@ -21,7 +21,7 @@ export default function Projects() {
         return <Code2 className="text-space-gold" size={18} />;
       case 'Backend':
         return <Database className="text-space-gold" size={18} />;
-      case 'Games':
+      case 'Experiments':
         return <Terminal className="text-space-gold" size={18} />;
       default:
         return <Layout className="text-space-gold" size={18} />;
@@ -32,17 +32,17 @@ export default function Projects() {
     <section id="projects" className="py-24 bg-[#050505] relative border-t border-white/10 text-left">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-10">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-space-gold font-semibold">
-              Featured Work
+              Portfolio
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight mt-2">
-              Software Projects
+              Featured Software Projects
             </h2>
           </div>
           <p className="text-white/60 text-sm max-w-md font-sans">
-            Practical software projects spanning native Android development, enterprise RESTful APIs in C#, and event-driven applications.
+            Production-grade systems including enterprise C# REST APIs, localized Android applications, and full-stack web solutions with live source code and documentation.
           </p>
         </div>
 
@@ -63,89 +63,109 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Projects Grid with Screenshots and Direct Action Links */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((proj) => (
             <div
               key={proj.id}
-              className="bg-[#0a0a0a] border border-white/10 p-6 sm:p-8 rounded-2xl flex flex-col justify-between hover:border-white/20 transition-all group"
+              className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-white/20 transition-all group shadow-xl"
             >
               <div>
-                {/* Header row */}
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                {/* Screenshot / Preview Banner */}
+                {proj.imageUrl && (
+                  <div className="aspect-[16/9] w-full overflow-hidden bg-black/60 relative border-b border-white/5">
+                    <img
+                      src={proj.imageUrl}
+                      alt={`${proj.title} preview screenshot`}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-80" />
+                    <span className="absolute top-3 left-3 text-[10px] font-mono uppercase px-2.5 py-1 rounded bg-black/80 backdrop-blur-md text-space-gold border border-white/10 font-bold">
+                      {proj.category}
+                    </span>
+                  </div>
+                )}
+
+                <div className="p-6 sm:p-7">
+                  {/* Title & Icon */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                       {getCategoryIcon(proj.category)}
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-space-gold font-semibold">{proj.category}</span>
                       <h3 className="text-lg font-bold font-heading text-white group-hover:text-space-gold transition-colors">
                         {proj.title}
                       </h3>
                     </div>
                   </div>
 
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 rounded-lg bg-white/5 text-white/60 hover:text-white hover:bg-white/10 transition shrink-0"
-                    title="View GitHub Repository"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Github size={18} />
-                  </a>
-                </div>
+                  {/* Description */}
+                  <p className="text-white/70 text-sm leading-relaxed mb-5 font-sans">
+                    {proj.description}
+                  </p>
 
-                {/* Description */}
-                <p className="text-white/70 text-sm leading-relaxed mb-6 font-sans">
-                  {proj.description}
-                </p>
+                  {/* Key Capabilities */}
+                  <div className="space-y-2 mb-6">
+                    {proj.features.slice(0, 3).map((feat, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-white/60 font-sans">
+                        <Check size={14} className="text-space-gold shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
 
-                {/* Key features bullets */}
-                <div className="space-y-2 mb-6">
-                  {proj.features.slice(0, 3).map((feat, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-white/60 font-sans">
-                      <Check size={14} className="text-space-gold shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
+                  {/* Technologies tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                    {proj.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-white/70 border border-white/5"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div>
-                {/* Technologies tags */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5 mb-4">
-                  {proj.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-white/70 border border-white/5"
+              {/* Direct Clickable Project Links: [GitHub →] [Live Demo / Docs →] [Details] */}
+              <div className="px-6 sm:px-7 pb-6 pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-white/5 mt-2 bg-[#080808]">
+                <div className="flex items-center gap-2.5">
+                  {proj.githubUrl && (
+                    <a
+                      href={proj.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white/10 hover:bg-white text-white hover:text-black text-xs font-semibold rounded-lg transition"
+                      title="View GitHub Repository"
                     >
-                      {tech}
-                    </span>
-                  ))}
+                      <Github size={14} />
+                      <span>GitHub &rarr;</span>
+                    </a>
+                  )}
+
+                  {proj.liveDemoUrl && (
+                    <a
+                      href={proj.liveDemoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-space-gold hover:bg-space-gold/90 text-black text-xs font-semibold rounded-lg transition shadow-sm"
+                      title="View Live Demo or Documentation"
+                    >
+                      <ExternalLink size={13} />
+                      <span>{proj.demoLabel || 'Live Demo &rarr;'}</span>
+                    </a>
+                  )}
                 </div>
 
-                {/* Footer Actions */}
-                <div className="flex items-center justify-between pt-2">
-                  <button
-                    onClick={() => setActiveProject(proj)}
-                    className="text-xs font-semibold text-space-gold hover:text-white transition cursor-pointer flex items-center gap-1.5"
-                  >
-                    <span>View Architecture Details</span>
-                    <span aria-hidden="true">&rarr;</span>
-                  </button>
-
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs text-white/50 hover:text-white transition flex items-center gap-1"
-                  >
-                    <span>Source Code</span>
-                    <ExternalLink size={12} />
-                  </a>
-                </div>
+                <button
+                  onClick={() => setActiveProject(proj)}
+                  className="text-xs text-white/50 hover:text-white transition flex items-center gap-1 cursor-pointer"
+                >
+                  <Eye size={12} />
+                  <span>Architecture</span>
+                </button>
               </div>
             </div>
           ))}
@@ -155,7 +175,7 @@ export default function Projects() {
       {/* Project Details Modal */}
       <AnimatePresence>
         {activeProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -217,20 +237,37 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                <a
-                  href={activeProject.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-space-gold text-black font-semibold text-xs rounded-lg hover:bg-space-gold/90 transition"
-                >
-                  <Github size={16} />
-                  <span>View Repository on GitHub</span>
-                </a>
+              {/* Direct Links in Modal */}
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  {activeProject.githubUrl && (
+                    <a
+                      href={activeProject.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white text-white hover:text-black font-semibold text-xs rounded-lg transition"
+                    >
+                      <Github size={15} />
+                      <span>GitHub Repo</span>
+                    </a>
+                  )}
+
+                  {activeProject.liveDemoUrl && (
+                    <a
+                      href={activeProject.liveDemoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-space-gold text-black font-semibold text-xs rounded-lg hover:bg-space-gold/90 transition"
+                    >
+                      <ExternalLink size={15} />
+                      <span>{activeProject.demoLabel || 'Live Demo'}</span>
+                    </a>
+                  )}
+                </div>
 
                 <button
                   onClick={() => setActiveProject(null)}
-                  className="px-4 py-2 text-xs text-white/50 hover:text-white transition"
+                  className="px-4 py-2 text-xs text-white/50 hover:text-white transition cursor-pointer"
                 >
                   Close
                 </button>

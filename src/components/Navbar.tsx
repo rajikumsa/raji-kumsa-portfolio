@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, FileText } from 'lucide-react';
+import { Menu, X, FileText, Mail, Phone, Github, Linkedin } from 'lucide-react';
+import { PERSONAL_INFO } from '../data';
 
 interface NavbarProps {
   onOpenCV: () => void;
@@ -61,11 +62,11 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#050505]/90 backdrop-blur-md border-b border-white/10 py-3.5 shadow-xl'
-          : 'bg-transparent py-5'
+          ? 'bg-[#050505]/95 backdrop-blur-md border-b border-white/10 py-3 shadow-xl'
+          : 'bg-transparent py-4 sm:py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-6">
         {/* Brand Zone */}
         <a
           href="#home"
@@ -84,7 +85,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
         </a>
 
         {/* Nav Links (Desktop) */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+        <div className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/70">
           {NAV_ITEMS.map((item) => {
             const isActive = activeHash === item.href;
             return (
@@ -105,25 +106,68 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
           })}
         </div>
 
-        {/* Primary Action Button */}
+        {/* Right Zone: Quick Contact Icons + View CV Action */}
         <div className="hidden md:flex items-center gap-3 shrink-0">
+          {/* Quick contact icons */}
+          <div className="flex items-center gap-1.5 pr-2 border-r border-white/10">
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="p-1.5 text-white/60 hover:text-space-gold hover:bg-white/5 rounded-md transition"
+              title={`Email: ${PERSONAL_INFO.email}`}
+            >
+              <Mail size={16} />
+            </a>
+            <a
+              href={`tel:${PERSONAL_INFO.phone}`}
+              className="p-1.5 text-white/60 hover:text-space-gold hover:bg-white/5 rounded-md transition"
+              title={`Call: ${PERSONAL_INFO.phone}`}
+            >
+              <Phone size={16} />
+            </a>
+            <a
+              href={PERSONAL_INFO.socials.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="p-1.5 text-white/60 hover:text-space-gold hover:bg-white/5 rounded-md transition"
+              title="LinkedIn Profile"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href={PERSONAL_INFO.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="p-1.5 text-white/60 hover:text-space-gold hover:bg-white/5 rounded-md transition"
+              title="GitHub Profile"
+            >
+              <Github size={16} />
+            </a>
+          </div>
+
           <button
             onClick={onOpenCV}
-            className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-space-gold text-black text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-sm"
+            className="flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-space-gold text-black text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-sm"
           >
             <FileText size={14} />
             <span>View CV</span>
           </button>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Buttons */}
         <div className="flex md:hidden items-center gap-2">
+          <a
+            href={`mailto:${PERSONAL_INFO.email}`}
+            className="p-2 text-white/70 hover:text-space-gold"
+            title="Email"
+          >
+            <Mail size={17} />
+          </a>
           <button
             onClick={onOpenCV}
             className="p-2 text-white/80 hover:text-space-gold rounded-lg transition"
             title="View CV"
           >
-            <FileText size={18} />
+            <FileText size={17} />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -137,7 +181,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0a0a] border-b border-white/10 px-6 py-4 flex flex-col gap-2 animate-fadeIn">
+        <div className="md:hidden bg-[#0a0a0a] border-b border-white/10 px-6 py-4 flex flex-col gap-2 animate-fadeIn text-left">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -151,7 +195,24 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
               {item.label}
             </a>
           ))}
-          <div className="pt-3 border-t border-white/10 mt-1">
+
+          {/* Mobile Direct Contacts */}
+          <div className="pt-3 border-t border-white/10 mt-1 flex items-center justify-between text-xs text-white/70">
+            <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-1.5 text-space-gold">
+              <Mail size={14} />
+              <span>Email</span>
+            </a>
+            <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-1.5 text-space-gold">
+              <Phone size={14} />
+              <span>{PERSONAL_INFO.phone}</span>
+            </a>
+            <a href={PERSONAL_INFO.socials.github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-white/60">
+              <Github size={14} />
+              <span>GitHub</span>
+            </a>
+          </div>
+
+          <div className="pt-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

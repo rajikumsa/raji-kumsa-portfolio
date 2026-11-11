@@ -178,7 +178,6 @@ export default function CVModal({ isOpen, onClose, profilePic }: CVModalProps) {
                 <div>
                   <h3 className="font-semibold text-white text-sm">{PERSONAL_INFO.education.degree}</h3>
                   <p className="text-white/75 mt-0.5">{PERSONAL_INFO.education.institution}</p>
-                  <p className="text-white/45 italic mt-1 font-sans">{PERSONAL_INFO.education.graduationStatus}</p>
                 </div>
                 <span className="text-white/45 font-mono italic shrink-0">{PERSONAL_INFO.education.period}</span>
               </div>
@@ -204,6 +203,28 @@ export default function CVModal({ isOpen, onClose, profilePic }: CVModalProps) {
                         </span>
                       ))}
                     </div>
+                    {proj.githubUrl && (
+                      <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center gap-3 text-[10px]">
+                        <a
+                          href={proj.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-space-gold hover:underline"
+                        >
+                          GitHub &rarr;
+                        </a>
+                        {proj.liveDemoUrl && (
+                          <a
+                            href={proj.liveDemoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-white/60 hover:text-white hover:underline"
+                          >
+                            {proj.demoLabel || 'Demo'} &rarr;
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

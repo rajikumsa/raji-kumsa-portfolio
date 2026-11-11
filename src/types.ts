@@ -7,6 +7,9 @@ export interface Project {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
+  liveDemoUrl?: string;
+  demoLabel?: string;
+  imageUrl?: string;
   features: string[];
   architecture?: string;
 }

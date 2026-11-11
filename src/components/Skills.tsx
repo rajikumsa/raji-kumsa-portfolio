@@ -1,66 +1,76 @@
-import { CodeXml, Database, Smartphone, Flame, Globe, GitBranch, Users, Lightbulb, Languages, Network } from 'lucide-react';
+import { CodeXml, Database, Smartphone, Flame, Globe, GitBranch, Users, Languages, Network, ShieldCheck, Box } from 'lucide-react';
 
 const SKILL_GROUPS = [
   {
-    title: 'Backend & Systems Architecture',
-    description: 'Developing scalable web services, API endpoints, and relational database structures.',
+    title: 'Backend & Automated Testing',
+    description: 'Developing scalable web services, API endpoints, and verifiable test suites.',
     skills: [
       {
         name: 'C# / ASP.NET Core',
         icon: CodeXml,
-        detail: 'Object-oriented programming, Web APIs, controller routing, and Entity Framework Core.',
+        detail: 'Object-oriented architecture, Web APIs, controller routing, dependency injection, and EF Core.',
       },
       {
-        name: 'RESTful API Design',
+        name: 'RESTful API & Swagger',
         icon: Network,
-        detail: 'HTTP verbs, request/response models, input validation, and asynchronous processing.',
+        detail: 'HTTP verbs, request/response DTOs, input validation, and OpenAPI Swagger documentation.',
       },
       {
-        name: 'SQL & Database Design',
+        name: 'Unit Testing (xUnit & Moq)',
+        icon: ShieldCheck,
+        detail: 'Automated test suites with xUnit, NUnit, and Moq to validate domain logic and mock data layers.',
+      },
+      {
+        name: 'SQL Server & Database Design',
         icon: Database,
-        detail: 'Relational schema design, normalization, queries, stored procedures, and migrations.',
+        detail: 'Relational schema design, normalization, complex queries, stored procedures, and migrations.',
       },
     ],
   },
   {
-    title: 'Mobile & Frontend',
+    title: 'Mobile & Frontend Development',
     description: 'Crafting responsive client interfaces and native Android applications.',
     skills: [
       {
         name: 'Java (Android SDK)',
         icon: Smartphone,
-        detail: 'Native Android architecture, activity lifecycles, XML layouts, and background threads.',
+        detail: 'Native Android architecture, activity lifecycles, XML layouts, and asynchronous background threads.',
       },
       {
         name: 'Firebase Integration',
         icon: Flame,
-        detail: 'Firebase Authentication, Real-time Database synchronization, and offline persistence.',
+        detail: 'Firebase Authentication, Real-time Database synchronization, security rules, and offline caching.',
       },
       {
-        name: 'Web Technologies (HTML/CSS/JS)',
+        name: 'Modern Web (React / TS / HTML5)',
         icon: Globe,
-        detail: 'Semantic markup, modern responsive layouts, Flexbox/Grid, and client DOM scripting.',
+        detail: 'Responsive layouts, TypeScript interfaces, Flexbox/Grid, and component-driven architecture.',
       },
     ],
   },
   {
-    title: 'Workflows & Collaboration',
-    description: 'Agile team dynamics, version control, and cross-cultural communication.',
+    title: 'DevOps & Professional Practice',
+    description: 'Agile team dynamics, containerization, version control, and trilingual communication.',
     skills: [
       {
-        name: 'Git & Version Control',
+        name: 'Docker & DevOps CI',
+        icon: Box,
+        detail: 'Containerizing services with Docker, Postman collections, and GitHub CI deployment workflows.',
+      },
+      {
+        name: 'Git & GitHub Collaboration',
         icon: GitBranch,
-        detail: 'Branching models, merge conflict resolution, pull request reviews, and GitHub tracking.',
+        detail: 'Branching models, merge conflict resolution, pull request reviews, and continuous integration.',
       },
       {
-        name: 'Multilingual Localization',
+        name: 'Trilingual Localization',
         icon: Languages,
-        detail: 'Fluent in English, Amharic, and Afan Oromo, with experience in localized application strings.',
+        detail: 'Fluent in English, Amharic, and Afan Oromo, with practical experience in i18n application strings.',
       },
       {
-        name: 'Agile & Problem Solving',
+        name: 'Agile & Team Problem Solving',
         icon: Users,
-        detail: 'Daily standups, sprint retrospectives, systematic root-cause debugging, and teamwork.',
+        detail: 'Daily standups, sprint retrospectives, root-cause debugging, and cross-functional collaboration.',
       },
     ],
   },
@@ -79,7 +89,7 @@ export default function Skills() {
             Skills & Competencies
           </h2>
           <p className="text-white/60 text-sm leading-relaxed mt-4 font-sans">
-            A practical summary of core technical proficiencies, development frameworks, and collaborative practices.
+            A practical summary of core technical proficiencies, testing frameworks, DevOps tools, and collaborative practices.
           </p>
         </div>
 

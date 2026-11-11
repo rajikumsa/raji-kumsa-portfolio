@@ -39,11 +39,13 @@ export default function Hero({ onOpenCV, profilePic }: HeroProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center gap-2 text-xs font-mono font-medium text-space-gold mb-4"
+            className="flex items-center gap-2 text-xs font-mono font-medium text-space-gold mb-3"
           >
-            <span>Computer Science Graduate</span>
+            <span>BSc. Computer Science '25</span>
             <span aria-hidden="true">·</span>
-            <span>Backend & Mobile Developer</span>
+            <span>Arsi University</span>
+            <span aria-hidden="true">·</span>
+            <span className="text-emerald-400">Available for Opportunities</span>
           </motion.div>
 
           {/* Main Title */}
@@ -56,39 +58,24 @@ export default function Hero({ onOpenCV, profilePic }: HeroProps) {
             Raji Kumsa
           </motion.h1>
 
-          {/* Clean Description */}
-          <motion.p
+          {/* Immediate 1-line headline summary */}
+          <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-white/70 mt-5 text-base sm:text-lg leading-relaxed max-w-2xl font-sans"
+            className="mt-4 p-3.5 bg-white/5 border border-white/10 rounded-xl max-w-2xl text-left"
           >
-            Passionate software engineer building resilient backend APIs in <strong className="text-white font-semibold">C# (ASP.NET Core)</strong>, native Android applications in <strong className="text-white font-semibold">Java</strong>, and structured database systems with SQL Server and Firebase.
-          </motion.p>
-
-          {/* Meta specs row */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15 }}
-            className="flex flex-wrap items-center gap-4 text-xs text-white/50 mt-5 font-sans"
-          >
-            <div className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-space-gold" />
-              <span>{PERSONAL_INFO.location}</span>
-            </div>
-            <span aria-hidden="true" className="text-white/20">·</span>
-            <div>Arsi University (BSc. CS '25)</div>
-            <span aria-hidden="true" className="text-white/20">·</span>
-            <div className="text-emerald-400 font-medium">Available for Opportunities</div>
+            <p className="text-white/90 text-sm sm:text-base font-medium leading-relaxed font-sans">
+              Backend &amp; Android developer &mdash; C#/ASP.NET Core, Java/Firebase. Trilingual (English, Amharic, Afan Oromo). Open to junior roles in Addis Ababa or remote.
+            </p>
           </motion.div>
 
           {/* Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="flex flex-wrap gap-3.5 mt-8 items-center"
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="flex flex-wrap gap-3.5 mt-6 items-center"
           >
             <button
               onClick={() => handleScrollTo('projects')}
@@ -113,45 +100,47 @@ export default function Hero({ onOpenCV, profilePic }: HeroProps) {
             </button>
           </motion.div>
 
-          {/* Social Links Row */}
+          {/* Direct Clickable Contacts Row */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="flex items-center gap-3 mt-8 pt-6 border-t border-white/10"
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex flex-wrap items-center gap-4 mt-6 pt-6 border-t border-white/10 text-xs font-sans text-white/70"
           >
-            <span className="text-xs text-white/40 font-mono uppercase tracking-wider">Connect:</span>
             <a
-              href={PERSONAL_INFO.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="p-2 rounded-lg bg-white/5 text-white/70 hover:text-white hover:bg-white/10 transition"
-              aria-label="GitHub Profile"
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="inline-flex items-center gap-1.5 hover:text-space-gold transition"
             >
-              <Github size={16} />
+              <Mail size={14} className="text-space-gold" />
+              <span>{PERSONAL_INFO.email}</span>
             </a>
+            <span aria-hidden="true" className="text-white/20 hidden sm:inline">·</span>
+            <a
+              href={`tel:${PERSONAL_INFO.phone}`}
+              className="inline-flex items-center gap-1.5 hover:text-space-gold transition"
+            >
+              <Phone size={14} className="text-space-gold" />
+              <span>{PERSONAL_INFO.phone}</span>
+            </a>
+            <span aria-hidden="true" className="text-white/20 hidden sm:inline">·</span>
             <a
               href={PERSONAL_INFO.socials.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg bg-white/5 text-white/70 hover:text-white hover:bg-white/10 transition"
-              aria-label="LinkedIn Profile"
+              className="inline-flex items-center gap-1.5 hover:text-space-gold transition"
             >
-              <Linkedin size={16} />
+              <Linkedin size={14} className="text-space-gold" />
+              <span>LinkedIn</span>
             </a>
+            <span aria-hidden="true" className="text-white/20 hidden sm:inline">·</span>
             <a
-              href={`mailto:${PERSONAL_INFO.email}`}
-              className="p-2 rounded-lg bg-white/5 text-white/70 hover:text-white hover:bg-white/10 transition"
-              aria-label="Send Email"
+              href={PERSONAL_INFO.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-space-gold transition"
             >
-              <Mail size={16} />
-            </a>
-            <a
-              href={`tel:${PERSONAL_INFO.phone}`}
-              className="p-2 rounded-lg bg-white/5 text-white/70 hover:text-white hover:bg-white/10 transition"
-              aria-label="Call Phone"
-            >
-              <Phone size={16} />
+              <Github size={14} className="text-space-gold" />
+              <span>GitHub</span>
             </a>
           </motion.div>
         </div>
@@ -163,7 +152,7 @@ export default function Hero({ onOpenCV, profilePic }: HeroProps) {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="lg:col-span-5 flex justify-center"
         >
-          <div className="w-full max-w-[380px] bg-[#0a0a0a] rounded-2xl border border-white/10 p-3 shadow-2xl relative">
+          <div className="w-full max-w-[360px] bg-[#0a0a0a] rounded-2xl border border-white/10 p-3 shadow-2xl relative">
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#050505]">
               <img
                 src={profilePic}
@@ -174,7 +163,7 @@ export default function Hero({ onOpenCV, profilePic }: HeroProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-4 right-4 text-left">
                 <p className="text-white font-semibold text-sm">Raji Kumsa</p>
-                <p className="text-space-gold text-xs font-mono">BSc. Computer Science</p>
+                <p className="text-space-gold text-xs font-mono">BSc. Computer Science · Arsi University</p>
               </div>
             </div>
           </div>
