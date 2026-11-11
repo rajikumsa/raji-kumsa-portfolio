@@ -13,13 +13,13 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import { Download } from 'lucide-react';
 import CVModal from './components/CVModal';
-import NetlifyModal from './components/NetlifyModal';
+import DeploymentModal from './components/DeploymentModal';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import defaultProfilePic from './assets/images/EOSR8039 copy.jpg';
 
 export default function App() {
   const [isCVOpen, setIsCVOpen] = useState(false);
-  const [isNetlifyOpen, setIsNetlifyOpen] = useState(false);
+  const [isDeployModalOpen, setIsDeployModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#e0d8d0] antialiased selection:bg-space-gold/20 selection:text-space-gold">
@@ -86,10 +86,10 @@ export default function App() {
             </a>
             <span className="text-white/20">·</span>
             <button
-              onClick={() => setIsNetlifyOpen(true)}
+              onClick={() => setIsDeployModalOpen(true)}
               className="text-white/40 hover:text-white transition cursor-pointer"
             >
-              Deployment Guide
+              Free Deploy Platforms
             </button>
           </div>
         </div>
@@ -98,8 +98,8 @@ export default function App() {
       {/* Curriculum Vitae Modal */}
       <CVModal isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} profilePic={defaultProfilePic} />
 
-      {/* Netlify Deployment Helper Modal */}
-      <NetlifyModal isOpen={isNetlifyOpen} onClose={() => setIsNetlifyOpen(false)} />
+      {/* Free Deployment Guide Modal */}
+      <DeploymentModal isOpen={isDeployModalOpen} onClose={() => setIsDeployModalOpen(false)} />
     </div>
   );
 }
