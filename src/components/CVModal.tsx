@@ -91,11 +91,21 @@ export default function CVModal({ isOpen, onClose, profilePic }: CVModalProps) {
               <div className="mt-4 sm:mt-0 text-center sm:text-right text-xs font-mono space-y-1.5 text-white/60">
                 <div className="flex items-center justify-center sm:justify-end gap-1.5">
                   <Mail size={12} className="text-space-gold" />
-                  <span>{PERSONAL_INFO.email}</span>
+                  <a
+                    href={`mailto:${PERSONAL_INFO.email}`}
+                    className="hover:text-space-gold transition underline-offset-2 hover:underline"
+                  >
+                    {PERSONAL_INFO.email}
+                  </a>
                 </div>
                 <div className="flex items-center justify-center sm:justify-end gap-1.5">
                   <Phone size={12} className="text-space-gold" />
-                  <span>{PERSONAL_INFO.phone}</span>
+                  <a
+                    href={`tel:${PERSONAL_INFO.phone}`}
+                    className="hover:text-space-gold transition underline-offset-2 hover:underline"
+                  >
+                    {PERSONAL_INFO.phone}
+                  </a>
                 </div>
                 <div className="flex items-center justify-center sm:justify-end gap-1.5">
                   <Github size={12} className="text-space-gold" />

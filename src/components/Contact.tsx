@@ -1,10 +1,24 @@
 import { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Github, Linkedin, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { PERSONAL_INFO } from '../data';
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(PERSONAL_INFO.email);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const copyPhone = () => {
+    navigator.clipboard.writeText(PERSONAL_INFO.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -55,18 +69,29 @@ export default function Contact() {
                   <a
                     href={`mailto:${PERSONAL_INFO.email}`}
                     className="text-white font-medium text-xs sm:text-sm hover:text-space-gold transition truncate block"
+                    title="Click to open default email client"
                   >
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
               </div>
-              <a
-                href={`mailto:${PERSONAL_INFO.email}`}
-                className="text-space-gold hover:text-white transition p-2"
-                title="Send Email"
-              >
-                <ArrowUpRight size={16} />
-              </a>
+              <div className="flex items-center gap-1 shrink-0">
+                <button
+                  onClick={copyEmail}
+                  className="p-2 text-white/50 hover:text-white hover:bg-white/5 rounded-lg transition text-xs flex items-center gap-1 cursor-pointer"
+                  title="Copy email to clipboard"
+                >
+                  {copiedEmail ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+                  <span className="text-[10px] hidden sm:inline">{copiedEmail ? 'Copied' : 'Copy'}</span>
+                </button>
+                <a
+                  href={`mailto:${PERSONAL_INFO.email}`}
+                  className="text-space-gold hover:text-white transition p-2 hover:bg-white/5 rounded-lg"
+                  title="Open mail application"
+                >
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
             </div>
 
             {/* Phone Card */}
@@ -80,18 +105,29 @@ export default function Contact() {
                   <a
                     href={`tel:${PERSONAL_INFO.phone}`}
                     className="text-white font-medium text-xs sm:text-sm hover:text-space-gold transition block"
+                    title="Click to call phone"
                   >
                     {PERSONAL_INFO.phone}
                   </a>
                 </div>
               </div>
-              <a
-                href={`tel:${PERSONAL_INFO.phone}`}
-                className="text-space-gold hover:text-white transition p-2"
-                title="Call Phone"
-              >
-                <ArrowUpRight size={16} />
-              </a>
+              <div className="flex items-center gap-1 shrink-0">
+                <button
+                  onClick={copyPhone}
+                  className="p-2 text-white/50 hover:text-white hover:bg-white/5 rounded-lg transition text-xs flex items-center gap-1 cursor-pointer"
+                  title="Copy phone to clipboard"
+                >
+                  {copiedPhone ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+                  <span className="text-[10px] hidden sm:inline">{copiedPhone ? 'Copied' : 'Copy'}</span>
+                </button>
+                <a
+                  href={`tel:${PERSONAL_INFO.phone}`}
+                  className="text-space-gold hover:text-white transition p-2 hover:bg-white/5 rounded-lg"
+                  title="Call number"
+                >
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
             </div>
 
             {/* Location Card */}
