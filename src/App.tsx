@@ -11,6 +11,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import { Download } from 'lucide-react';
 import CVModal from './components/CVModal';
 import NetlifyModal from './components/NetlifyModal';
 import ScrollProgressBar from './components/ScrollProgressBar';
@@ -57,7 +58,7 @@ export default function App() {
             &copy; {new Date().getFullYear()} Raji Kumsa. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-4 text-xs">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <button
               onClick={() => setIsCVOpen(true)}
               className="text-space-gold hover:underline cursor-pointer"
@@ -71,14 +72,24 @@ export default function App() {
               rel="noreferrer"
               className="text-white/60 hover:text-white transition"
             >
-              Portfolio Repository
+              GitHub Repository
+            </a>
+            <span className="text-white/20">·</span>
+            <a
+              href="/portfolio-source.zip"
+              download="raji-kumsa-portfolio-updated.zip"
+              className="text-teal-400 hover:text-teal-300 font-medium transition inline-flex items-center gap-1.5"
+              title="Download all updated source code files in a zip"
+            >
+              <Download size={13} />
+              <span>Download Code (ZIP)</span>
             </a>
             <span className="text-white/20">·</span>
             <button
               onClick={() => setIsNetlifyOpen(true)}
               className="text-white/40 hover:text-white transition cursor-pointer"
             >
-              Deployment Info
+              Deployment Guide
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { X, ExternalLink, Check, Copy, Server, Shield, Send, Terminal } from 'lucide-react';
+import { X, ExternalLink, Check, Copy, Server, Shield, Send, Terminal, Download, Github } from 'lucide-react';
 import { useState } from 'react';
 
 interface NetlifyModalProps {
@@ -49,6 +49,27 @@ export default function NetlifyModal({ isOpen, onClose }: NetlifyModalProps) {
 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-left">
+          {/* GitHub Sync Section */}
+          <div className="p-4 rounded-xl bg-teal-950/30 border border-teal-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 text-teal-300 text-xs font-bold mb-1">
+                <Github size={16} />
+                <span>Sync with rajikumsa/raji-kumsa-portfolio</span>
+              </div>
+              <p className="text-xs text-white/70 max-w-md">
+                Download the updated source files (including simplified UI & components) to upload or push to your GitHub repo.
+              </p>
+            </div>
+            <a
+              href="/portfolio-source.zip"
+              download="raji-kumsa-portfolio-updated.zip"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-400 hover:bg-teal-300 text-black text-xs font-bold rounded-lg transition shrink-0 cursor-pointer shadow-sm"
+            >
+              <Download size={14} />
+              <span>Download Source (ZIP)</span>
+            </a>
+          </div>
+
           {/* Status grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="p-3 rounded-xl bg-white/5 border border-white/5">
