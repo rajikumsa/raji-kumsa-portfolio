@@ -81,6 +81,7 @@ export default function App() {
             <p className="text-white/40">
               &copy; {new Date().getFullYear()} Raji Kumsa. All rights reserved.
             </p>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <button
