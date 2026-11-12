@@ -125,22 +125,12 @@ export default function Projects() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-neutral-300 text-sm leading-relaxed mb-5 font-sans font-light">
+                  <p className="text-neutral-300 text-sm leading-relaxed mb-4 font-sans font-light">
                     {proj.description}
                   </p>
 
-                  {/* Key Capabilities */}
-                  <div className="space-y-2 mb-6">
-                    {proj.features.slice(0, 3).map((feat, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-neutral-400 font-sans">
-                        <Check size={14} className="text-amber-400 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-
                   {/* Technologies tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/[0.06]">
                     {proj.technologies.map((tech) => (
                       <span
                         key={tech}

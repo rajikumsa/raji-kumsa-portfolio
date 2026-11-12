@@ -36,7 +36,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 bg-[#07080b] relative border-t border-white/[0.08] text-left overflow-hidden">
+    <section id="contact" className="py-20 bg-[#07080b] relative border-t border-white/[0.08] text-left overflow-hidden">
       {/* Background ambient lighting */}
       <div 
         className="pointer-events-none absolute -bottom-20 left-1/3 w-96 h-96 rounded-full bg-amber-500/5 blur-[120px]"
@@ -46,21 +46,21 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mb-16"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-2xl mb-12"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-medium mb-3">
             <Sparkles size={13} className="text-amber-400" />
             <span>LET&apos;S CONNECT</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-white tracking-tight mt-1">
-            Get in Touch
+          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight">
+            Contact
           </h2>
-          <p className="text-neutral-400 text-base leading-relaxed mt-4 font-sans font-light">
-            Interested in discussing full-time software engineering roles, technical opportunities, or collaborative projects? Reach out directly via email, phone, or the message form.
+          <p className="text-neutral-400 text-base leading-relaxed mt-3 font-sans font-light">
+            Open to software engineering opportunities in Addis Ababa or remote. Reach out directly or send a message.
           </p>
         </motion.div>
 

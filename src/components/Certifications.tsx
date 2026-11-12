@@ -8,7 +8,7 @@ export default function Certifications() {
   const [activeCert, setActiveCert] = useState<Certification | null>(null);
 
   return (
-    <section id="certifications" className="py-24 bg-[#07080b] relative border-t border-white/[0.08] text-left overflow-hidden">
+    <section id="certifications" className="py-20 bg-[#07080b] relative border-t border-white/[0.08] text-left overflow-hidden">
       {/* Background ambient lighting */}
       <div 
         className="pointer-events-none absolute top-1/2 right-10 w-96 h-96 rounded-full bg-amber-500/5 blur-[120px]"
@@ -18,23 +18,23 @@ export default function Certifications() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-10"
         >
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-medium mb-3">
               <Sparkles size={13} className="text-amber-400" />
               <span>VERIFIED CREDENTIALS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-white tracking-tight mt-1">
-              Udacity Nanodegrees & Certifications
+            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight">
+              Udacity Nanodegrees
             </h2>
           </div>
           <p className="text-neutral-400 text-sm max-w-md font-sans font-light leading-relaxed">
-            Officially verified Nanodegree programs completed through Udacity (Part of Accenture), validating core competencies in Android engineering, programming principles, and data analysis.
+            Officially verified Nanodegree programs completed through Udacity (Part of Accenture).
           </p>
         </motion.div>
 
