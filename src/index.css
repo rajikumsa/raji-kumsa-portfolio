@@ -1,56 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Space Grotesk", sans-serif;
-  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-space-bg: var(--space-bg);
-  --color-space-card: var(--space-card);
-  --color-space-text: var(--space-text);
-  --color-space-gold: var(--space-gold);
+  --color-space-bg: #07080b;
+  --color-space-card: #0e1118;
+  --color-space-card-hover: #141824;
+  --color-space-text: #e2e8f0;
+  --color-space-gold: #f59e0b;
+  --color-space-gold-light: #fbbf24;
 }
 
 :root {
-  /* Default: Cosmic Charcoal & Gold */
-  --space-bg: #050505;
-  --space-card: #0a0a0a;
-  --space-text: #e0d8d0;
-  --space-gold: #cc8b3c;
-}
-
-[data-theme='sapphire'] {
-  /* Deep Sapphire Blue Theme */
-  --space-bg: #030814;
-  --space-card: #071224;
-  --space-text: #e2f1fc;
-  --space-gold: #38bdf8;
-}
-
-[data-theme='emerald'] {
-  /* Emerald Nebula Theme */
-  --space-bg: #030d0a;
-  --space-card: #071712;
-  --space-text: #e2fceb;
-  --space-gold: #10b981;
-}
-
-[data-theme='amethyst'] {
-  /* Royal Amethyst Theme */
-  --space-bg: #07040d;
-  --space-card: #0e091b;
-  --space-text: #f3e8ff;
-  --space-gold: #a855f7;
-}
-
-[data-theme='cyber'] {
-  /* Cyberpunk Amber / Orange Theme */
-  --space-bg: #08080a;
-  --space-card: #0f0f15;
-  --space-text: #f1f5f9;
-  --space-gold: #f97316;
+  --space-bg: #07080b;
+  --space-card: #0e1118;
+  --space-text: #e2e8f0;
+  --space-gold: #f59e0b;
+  --space-gold-light: #fbbf24;
 }
 
 @layer base {
@@ -58,21 +27,71 @@
     scroll-behavior: smooth;
     background-color: var(--space-bg);
     color: var(--space-text);
-    transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  body {
+    background-color: var(--space-bg);
+    overflow-x: hidden;
   }
 }
 
-/* Custom scrollbar and ambient grid effects */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--space-bg);
+  background: #07080b;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--space-card);
-  border-radius: 4px;
+  background: #1e2433;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--space-gold);
+  background: #f59e0b;
+}
+
+/* Shimmer shine animation for primary action buttons */
+@keyframes shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shine 2.5s infinite;
+}
+
+/* Infinite Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle breathing glow for ambient lights */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
 }

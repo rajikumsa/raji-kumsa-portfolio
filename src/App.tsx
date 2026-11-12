@@ -11,6 +11,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
+import TechMarquee from './components/TechMarquee';
 import { Download, Mail, Phone, Github, Linkedin } from 'lucide-react';
 import CVModal from './components/CVModal';
 import DeploymentModal from './components/DeploymentModal';
@@ -23,7 +24,7 @@ export default function App() {
   const [isDeployModalOpen, setIsDeployModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#e0d8d0] antialiased selection:bg-space-gold/20 selection:text-space-gold">
+    <div className="min-h-screen bg-[#07080b] text-[#e0d8d0] antialiased selection:bg-amber-400/20 selection:text-amber-300">
       {/* Scroll Position Indicator */}
       <ScrollProgressBar />
 
@@ -36,6 +37,8 @@ export default function App() {
           onOpenCV={() => setIsCVOpen(true)} 
           profilePic={defaultProfilePic}
         />
+        {/* Infinite Tech Marquee Ribbon */}
+        <TechMarquee />
         <About 
           onOpenCV={() => setIsCVOpen(true)} 
         />
@@ -46,7 +49,7 @@ export default function App() {
       </main>
 
       {/* Quiet, Clean Footer with Direct Contact Links */}
-      <footer className="bg-[#050505] text-neutral-400 py-12 border-t border-white/10">
+      <footer className="bg-[#07080b] text-neutral-400 py-12 border-t border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 space-y-6 text-xs font-sans">
           {/* Quick Contact Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">

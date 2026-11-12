@@ -62,7 +62,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#050505]/95 backdrop-blur-md border-b border-white/10 py-3 shadow-xl'
+          ? 'bg-[#07080b]/90 backdrop-blur-xl border-b border-white/[0.08] py-3.5 shadow-2xl shadow-black/60'
           : 'bg-transparent py-4 sm:py-5'
       }`}
     >
@@ -76,16 +76,16 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
           }}
           className="flex items-center gap-2.5 group whitespace-nowrap shrink-0"
         >
-          <div className="w-8 h-8 rounded-lg bg-space-gold flex items-center justify-center text-black font-bold font-heading text-sm shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center text-black font-bold font-heading text-sm shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
             RK
           </div>
-          <span className="font-heading font-bold text-white text-base tracking-tight group-hover:text-space-gold transition-colors">
+          <span className="font-heading font-bold text-white text-base tracking-tight group-hover:text-amber-300 transition-colors">
             Raji Kumsa
           </span>
         </a>
 
         {/* Nav Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/70">
+        <div className="hidden lg:flex items-center gap-7 text-sm font-medium text-neutral-300">
           {NAV_ITEMS.map((item) => {
             const isActive = activeHash === item.href;
             return (
@@ -97,7 +97,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
                   handleLinkClick(item.href);
                 }}
                 className={`transition-colors whitespace-nowrap hover:text-white ${
-                  isActive ? 'text-space-gold font-semibold' : ''
+                  isActive ? 'text-amber-400 font-semibold' : ''
                 }`}
               >
                 {item.label}
@@ -146,7 +146,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
 
           <button
             onClick={onOpenCV}
-            className="flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-space-gold text-black text-xs font-semibold rounded-lg transition-colors cursor-pointer shadow-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-amber-400 hover:bg-amber-300 text-black text-xs font-bold rounded-xl transition duration-200 cursor-pointer shadow-md shadow-amber-500/20"
           >
             <FileText size={14} />
             <span>View CV</span>
@@ -157,21 +157,21 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
         <div className="flex md:hidden items-center gap-2">
           <a
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="p-2 text-white/70 hover:text-space-gold"
+            className="p-2 text-neutral-300 hover:text-amber-400"
             title="Email"
           >
             <Mail size={17} />
           </a>
           <button
             onClick={onOpenCV}
-            className="p-2 text-white/80 hover:text-space-gold rounded-lg transition"
+            className="p-2 text-neutral-300 hover:text-amber-400 rounded-lg transition"
             title="View CV"
           >
             <FileText size={17} />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-white/80 hover:text-white rounded-lg transition"
+            className="p-2 text-neutral-300 hover:text-white rounded-lg transition"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -181,7 +181,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0a0a0a] border-b border-white/10 px-6 py-4 flex flex-col gap-2 animate-fadeIn text-left">
+        <div className="md:hidden bg-[#0e1118] border-b border-white/[0.08] px-6 py-4 flex flex-col gap-2 animate-fadeIn text-left">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -190,23 +190,23 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
                 e.preventDefault();
                 handleLinkClick(item.href);
               }}
-              className="py-2.5 text-sm text-white/80 hover:text-space-gold font-medium transition"
+              className="py-2.5 text-sm text-neutral-300 hover:text-amber-300 font-medium transition"
             >
               {item.label}
             </a>
           ))}
 
           {/* Mobile Direct Contacts */}
-          <div className="pt-3 border-t border-white/10 mt-1 flex items-center justify-between text-xs text-white/70">
-            <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-1.5 text-space-gold">
+          <div className="pt-3 border-t border-white/[0.06] mt-1 flex items-center justify-between text-xs text-neutral-400">
+            <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-1.5 text-amber-400">
               <Mail size={14} />
               <span>Email</span>
             </a>
-            <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-1.5 text-space-gold">
+            <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-1.5 text-amber-400">
               <Phone size={14} />
               <span>{PERSONAL_INFO.phone}</span>
             </a>
-            <a href={PERSONAL_INFO.socials.github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-white/60">
+            <a href={PERSONAL_INFO.socials.github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-neutral-400">
               <Github size={14} />
               <span>GitHub</span>
             </a>
@@ -218,7 +218,7 @@ export default function Navbar({ onOpenCV }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenCV();
               }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-space-gold text-black text-xs font-bold rounded-lg transition"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-amber-400 text-black text-xs font-bold rounded-xl transition shadow-md shadow-amber-500/20"
             >
               <FileText size={14} />
               <span>View Curriculum Vitae (PDF)</span>
