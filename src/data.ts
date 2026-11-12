@@ -1,8 +1,11 @@
-import { Project, ExperienceItem, Skill } from './types';
+import { Project, ExperienceItem, Skill, Certification } from './types';
 import fitnessMockupImg from './assets/images/fitness_app_mockup_1794385828289.jpg';
 import dormitoryApiImg from './assets/images/dormitory_api_docs_1794385830772.jpg';
 import portfolioWebImg from './assets/images/portfolio_web_preview_1794385829053.jpg';
 import pingpongGameImg from './assets/images/pingpong_game_preview_1794385827985.jpg';
+import certAndroidImg from './assets/images/cert_android_developer_udacity.png';
+import certProgrammingImg from './assets/images/cert_programming_fundamentals_udacity.png';
+import certDataAnalysisImg from './assets/images/cert_data_analysis_udacity.png';
 
 export const PERSONAL_INFO = {
   name: 'Raji Kumsa',
@@ -249,4 +252,37 @@ export const SKILLS_DATA: Skill[] = [
     level: 5,
     description: 'Systematic root-cause debugging, tracing variables, and assessing core architectural issues.'
   }
+];
+
+export const CERTIFICATIONS_DATA: Certification[] = [
+  {
+    id: 'udacity-android',
+    title: 'Android Developer Fundamentals',
+    issuer: 'Udacity (Part of Accenture)',
+    issueDate: 'September 23, 2024',
+    verificationUrl: 'https://www.udacity.com/certificate/e/419c34ba-7293-11ef-8ee8-fbfc64425f1e',
+    credentialId: '419c34ba-7293-11ef-8ee8-fbfc64425f1e',
+    image: certAndroidImg,
+    skills: ['Android SDK', 'Java', 'UI Lifecycles', 'Layouts & Architecture'],
+  },
+  {
+    id: 'udacity-programming',
+    title: 'Programming Fundamentals',
+    issuer: 'Udacity (Part of Accenture)',
+    issueDate: 'September 26, 2024',
+    verificationUrl: 'https://confirm.udacity.com/TXJZ4YHN',
+    credentialId: 'TXJZ4YHN',
+    image: certProgrammingImg,
+    skills: ['Algorithms', 'Data Structures', 'Problem Solving', 'Clean Code'],
+  },
+  {
+    id: 'udacity-data-analysis',
+    title: 'Data Analysis Fundamentals',
+    issuer: 'Udacity (Part of Accenture)',
+    issueDate: 'September 27, 2024',
+    verificationUrl: 'https://confirm.udacity.com/HNLMYG95',
+    credentialId: 'HNLMYG95',
+    image: certDataAnalysisImg,
+    skills: ['Data Wrangling', 'SQL & Queries', 'Statistical Analysis', 'Insights'],
+  },
 ];

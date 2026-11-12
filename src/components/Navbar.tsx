@@ -8,6 +8,7 @@ interface NavbarProps {
 
 const NAV_ITEMS = [
   { label: 'About', href: '#about' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },

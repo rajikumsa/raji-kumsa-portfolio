@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { X, Mail, Phone, MapPin, Printer, Copy, Check, Download, Github } from 'lucide-react';
-import { useState } from 'react';
-import { PERSONAL_INFO, PROJECTS_DATA, EXPERIENCE_DATA, SKILLS_DATA } from '../data';
+import { PERSONAL_INFO, PROJECTS_DATA, EXPERIENCE_DATA, SKILLS_DATA, CERTIFICATIONS_DATA } from '../data';
 interface CVModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -190,6 +190,35 @@ export default function CVModal({ isOpen, onClose, profilePic }: CVModalProps) {
                   <p className="text-white/75 mt-0.5">{PERSONAL_INFO.education.institution}</p>
                 </div>
                 <span className="text-white/45 font-mono italic shrink-0">{PERSONAL_INFO.education.period}</span>
+              </div>
+            </div>
+
+            {/* Verified Certifications & Nanodegrees */}
+            <div className="mt-8">
+              <h2 className="text-sm font-semibold tracking-wider text-space-gold uppercase font-heading mb-4 border-b border-white/5 pb-1">Verified Certifications & Nanodegrees</h2>
+              <div className="space-y-3">
+                {CERTIFICATIONS_DATA.map(cert => (
+                  <div key={cert.id} className="text-xs flex justify-between items-start bg-white/[0.02] p-3 rounded-lg border border-white/5">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-white text-sm">{cert.title}</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-space-gold/10 text-space-gold font-mono font-medium">Verified</span>
+                      </div>
+                      <p className="text-white/60 text-xs mt-0.5">{cert.issuer}</p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <span className="text-white/45 font-mono text-[11px] block">{cert.issueDate}</span>
+                      <a
+                        href={cert.verificationUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-space-gold hover:underline text-[10px] font-mono mt-1 inline-block"
+                      >
+                        Verify Credential &rarr;
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 

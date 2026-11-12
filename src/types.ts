@@ -32,3 +32,14 @@ export interface Skill {
   level: number; // 1-5 scale for proficiency visualization
   description: string;
 }
+
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate: string;
+  verificationUrl: string;
+  credentialId?: string;
+  image: string;
+  skills: string[];
+}

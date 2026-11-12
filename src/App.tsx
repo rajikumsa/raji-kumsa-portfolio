@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Certifications from './components/Certifications';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
@@ -42,6 +43,7 @@ export default function App() {
         <About 
           onOpenCV={() => setIsCVOpen(true)} 
         />
+        <Certifications />
         <Projects />
         <Experience />
         <Skills />
